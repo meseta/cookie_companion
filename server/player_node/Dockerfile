@@ -5,8 +5,8 @@ ADD . /app
 
 RUN pip install --no-cache-dir pipenv
 
-RUN pipenv install --system --deploy --ignore-pipfile
+RUN pipenv install
 
 EXPOSE 61220
 
-CMD ["twistd", "--nodaemon", "--python", "player.tac"]
+CMD ["pipenv", "run", "twistd", "--nodaemon", "--python", "player.tac"]

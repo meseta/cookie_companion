@@ -15,7 +15,7 @@ from redissub import RedisSubFactory
 from redispub import RedisPubFactory
 
 port = 61220
-redis_server = "127.0.0.1"
+redis_server = "redis"
 node_id = "test"
 
 application = Application("playernode")

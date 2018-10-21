@@ -14,6 +14,7 @@ if(async_id == serverlist_req) {
 		if (servers) {
 			show_debug_message("ok");
 			var server_list = servers[? "servers"];
+			ds_list_shuffle(server_list);
 			var top_server = server_list[| 0]
 			server_name = top_server[? "name"]
 			server_addr = top_server[? "host"]

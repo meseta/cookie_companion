@@ -11,9 +11,33 @@ services:
             dockerfile: Dockerfile
         ports:
             - "80:80"
-    playernode:
+    playernode0:
         build:
             context: ./player_node
             dockerfile: Dockerfile
         ports:
             - "61220:61220"
+    playernode1:
+        build:
+            context: ./player_node
+            dockerfile: Dockerfile
+        ports:
+            - "61221:61220"
+    playernode2:
+        build:
+            context: ./player_node
+            dockerfile: Dockerfile
+        ports:
+            - "61222:61220"
+    playernode3:
+        build:
+            context: ./player_node
+            dockerfile: Dockerfile
+        ports:
+            - "61223:61220"
+    playernode4:
+        build:
+            context: ./player_node
+            dockerfile: Dockerfile
+        ports:
+            - "61224:61220"
