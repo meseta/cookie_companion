@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: redis
+  labels:
+    app: apps-redis
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: apps-redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:5.0-rc5-alpine
+        ports:
+        - containerPort: 6379
+        resources:
+          requests:
+            cpu: 500m

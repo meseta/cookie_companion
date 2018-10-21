@@ -16,7 +16,6 @@ from redispub import RedisPubFactory
 
 port = 61220
 redis_server = "127.0.0.1"
-#node_id = os.getenv("SESSION_NAME", None)
 node_id = "test"
 
 application = Application("playernode")

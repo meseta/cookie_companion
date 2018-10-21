@@ -13,8 +13,11 @@
 #endregion singleton pattern
 
 #region server config
-	//server_addr = "192.168.0.190"
-	server_addr = "35.229.93.47"
+	serverlist_address = "http://cookie.gmcloud.org/server_list.json"
+	serverlist_req = undefined;
+
+	server_name = "default"
+	server_addr = "cookie.gmcloud.org"
 	server_port = 61220
 	server_socket = undefined;
 	network_set_config(network_config_use_non_blocking_socket, 1);
@@ -24,6 +27,8 @@
 
 #region state machine
 	enum CONNSTATE {
+		serverlist_start,
+		serverlist_wait,
 		error,
 		disconnected,
 		connect_start,
@@ -33,7 +38,7 @@
 		connected
 	}
 
-	conn_state = CONNSTATE.connect_start;
+	conn_state = CONNSTATE.serverlist_start;
 	debug_text = "Undefined";
 
 #endregion state machine

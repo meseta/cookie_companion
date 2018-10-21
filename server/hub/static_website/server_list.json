@@ -1,0 +1,8 @@
+{
+	"servers": [{
+			"name": "main",
+			"host": "cookie.gmcloud.org",
+			"port": 61220
+		}
+	]
+}

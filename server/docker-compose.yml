@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    redis:
+        image: "redis:5.0-rc5-alpine"
+        ports:
+            - "6379:6379"
+    hub:
+        build:
+            context: ./hub
+            dockerfile: Dockerfile
+        ports:
+            - "80:80"
+    playernode:
+        build:
+            context: ./player_node
+            dockerfile: Dockerfile
+        ports:
+            - "61220:61220"

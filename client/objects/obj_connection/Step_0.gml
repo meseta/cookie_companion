@@ -2,6 +2,15 @@
 
 
 switch (conn_state) {
+case CONNSTATE.serverlist_start:
+	serverlist_req = http_get(serverlist_address);
+	conn_state = CONNSTATE.serverlist_wait;
+	//fallthrough
+
+case CONNSTATE.serverlist_wait:
+	debug_text = "Getting server list";
+	break;
+
 case CONNSTATE.error:
 case CONNSTATE.disconnected:
 	debug_text = "Disconnected";
@@ -12,14 +21,14 @@ case CONNSTATE.connect_start:
 	server_socket = network_create_socket(network_socket_tcp);
 	network_connect_raw(server_socket, server_addr, server_port);
 
-	scr_debug("Starting new connection to ", server_addr, ":", string(server_port));
+	scr_debug("Starting new connection to server: ", server_name);
 	conn_state = CONNSTATE.connect_wait;
 		
 	// fallthrough
 		
 case CONNSTATE.connect_wait:
 	// Wait for connection to complete
-	debug_text = "Connecting to server...";
+	debug_text = "Connecting to server " + server_name + " ...";
 	break;
 	
 case CONNSTATE.handshake_start:
