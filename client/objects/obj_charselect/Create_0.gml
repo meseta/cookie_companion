@@ -1,0 +1,3 @@
+/// @description
+
+select = CHARACTERCLASS.cookie;
