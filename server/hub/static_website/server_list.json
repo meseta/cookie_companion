@@ -3,26 +3,22 @@
 			"name": "Node0",
 			"host": "cookie.gmcloud.org",
 			"port": 61220
-		},{
+		}, {
 			"name": "Node1",
 			"host": "cookie.gmcloud.org",
 			"port": 61221
-		},{
+		}, {
 			"name": "Node2",
 			"host": "cookie.gmcloud.org",
 			"port": 61222
-		},{
+		}, {
 			"name": "Node3",
 			"host": "cookie.gmcloud.org",
 			"port": 61223
-		},{
+		}, {
 			"name": "Node4",
 			"host": "cookie.gmcloud.org",
 			"port": 61224
-		},{
-			"name": "Node5",
-			"host": "cookie.gmcloud.org",
-			"port": 61225
 		}
 	]
 }

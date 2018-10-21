@@ -23,7 +23,7 @@ class RedisSubClient(SubscriberProtocol):
                     break
 
             if delete:
-                #log.debug("Client unregistered callback {}".format(channel_name))
+                log.debug("Client unregistered callback {}".format(channel_name))
                 channel_callbacks.remove(delete)
 
     def register_callback(self, client, channel, callback):
@@ -35,7 +35,7 @@ class RedisSubClient(SubscriberProtocol):
             log.debug("Client registered callback on {}".format(channel))
 
     def messageReceived(self, pattern, channel, message):
-        log.info("pattern=%s, channel=%s message=%s" % (pattern, channel, message))
+        #log.info("pattern=%s, channel=%s message=%s" % (pattern, channel, message))
         if channel in self.callbacks:
             for client, callback in self.callbacks[channel]:
                 callback(message)
