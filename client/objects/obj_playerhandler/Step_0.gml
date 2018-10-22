@@ -48,6 +48,8 @@ while (jsonrpc_callmap_exists("statusupdate", obj_connection.call_map)) {
 			instance.lastseen = 0;
 		}
 		ds_map_destroy(update);
+		
+		players_online = ds_map_size(player_map);
 	}
 	else {
 		scr_debug("Could not decode moveupdate");
@@ -76,6 +78,17 @@ while (jsonrpc_callmap_exists("eventtrigger", obj_connection.call_map)) {
 					// drop cookie
 					has_cookie = false;
 					instance_create_depth(instance.x, instance.y, instance.depth, obj_cookie);
+					
+					// hit sounds
+					var vw = camera_get_view_width(view_camera[0]);
+					var vh = camera_get_view_height(view_camera[0]);
+					var cx = camera_get_view_x(view_camera[0]);
+					var cy = camera_get_view_y(view_camera[0]);
+
+					if (point_in_rectangle(x, y, cx, cy, cx+vw, cy+vh)) {
+						audio_sound_pitch(snd_hit, random_range(0.8, 1.2));
+						audio_play_sound(snd_hit, 10, false);
+					}	
 				}
 				break;
 			}

@@ -16,7 +16,7 @@ with (obj_playerparent) {
 	var weight = 0;
 	var rangemax = 0;
 	if (character_class == CHARACTERCLASS.cat) {
-		weight = -1;
+		weight = -0.5;
 		rangemax = 250;
 	}
 	else {
@@ -36,6 +36,7 @@ with (obj_playerparent) {
 		xvect += (x - other.x) * weight / range;
 		yvect += (y - other.y) * weight / range;
 	}
+
 }
 with (obj_mouse) {
 	var weight = -0.5;

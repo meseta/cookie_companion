@@ -16,6 +16,20 @@ while (jsonrpc_callmap_exists("mouseupdate", obj_connection.call_map)) {
 				ds_map_add(mouse_map, key, instance)
 			}
 			
+			// death sound
+			if (instance.alive == true and value[|4] == false) {
+				// death sounds
+				var vw = camera_get_view_width(view_camera[0]);
+				var vh = camera_get_view_height(view_camera[0]);
+				var cx = camera_get_view_x(view_camera[0]);
+				var cy = camera_get_view_y(view_camera[0]);
+
+				if (point_in_rectangle(x, y, cx, cy, cx+vw, cy+vh)) {
+					audio_sound_pitch(snd_squeek, random_range(0.8, 1.2));
+					audio_play_sound(snd_squeek, 10, false);
+				}	
+			}
+			
 			instance.next_x = value[| 2];
 			instance.next_y = value[| 3];
 			instance.alive = value[| 4];

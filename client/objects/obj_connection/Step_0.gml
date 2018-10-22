@@ -58,7 +58,7 @@ case CONNSTATE.handshake_wait:
 		
 case CONNSTATE.connected:
 	// connected state
-	debug_text = "Connected"
+	debug_text = "Connected to " + server_name;
 	break;
 }
 

@@ -9,8 +9,17 @@ if (space) {
 	with(obj_player) {
 		player_state = PLAYERSTATE.spawn_in;	
 		character_class = other.select;
+		audio_play_sound(snd_portal_down, 10, false);
 	}
 }
 
-if (left) select = CHARACTERCLASS.cookie;
-if (right) select = CHARACTERCLASS.cat;
+if (left and select != CHARACTERCLASS.cookie) {
+	audio_sound_pitch(snd_click, random_range(0.8, 1.2));
+	audio_play_sound(snd_click, 10, false);
+	select = CHARACTERCLASS.cookie;
+}
+if (right and select != CHARACTERCLASS.cat) {
+	audio_sound_pitch(snd_click, random_range(0.8, 1.2));
+	audio_play_sound(snd_click, 10, false);
+	select = CHARACTERCLASS.cat;
+}

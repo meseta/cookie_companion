@@ -34,6 +34,8 @@ case PLAYERSTATE.dunk_1:
 	if (animation_height >= 300) {
 		animation_height = 300;
 		player_state = PLAYERSTATE.dunk_2;
+		audio_sound_pitch(snd_dunk, 0.5);
+		audio_play_sound(snd_dunk, 10, false);
 		shake = true;
 	}
 	break;
@@ -69,6 +71,7 @@ case PLAYERSTATE.movement:
 	// despawn
 	if (attack and place_meeting(x, y, obj_spawnpoint)) {
 		player_state = PLAYERSTATE.spawn_out;
+		audio_play_sound(snd_portal_up, 10, false);
 		exit;
 	}
 	else if (character_class == CHARACTERCLASS.cat or has_cookie == false) {
@@ -168,6 +171,9 @@ case PLAYERSTATE.movement:
 						ds_queue_enqueue(obj_connection.transmit_queue, rpc);
 					}
 	
+				
+					audio_sound_pitch(snd_hit, random_range(0.8, 1.2));
+					audio_play_sound(snd_hit, 10, false);
 					
 					break;	
 				}

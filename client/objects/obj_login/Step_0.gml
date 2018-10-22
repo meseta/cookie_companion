@@ -3,7 +3,7 @@
 
 switch(login_state) {
 case LOGINSTATE.player_input:
-	//username = get_string("Username", "Anon");
+	username = get_string("Username", "Anon");
 	if (string_length(username) > 10) {
 		username = string_copy(username, 1, 10);	
 	}
@@ -45,8 +45,13 @@ case LOGINSTATE.success:
 		ping_text = " (PING: " + string(ms) + "ms)";
 		alarm[0] = room_speed/2;
 	}
+	var online = 0;
+	with (obj_playerhandler) {
+		online = players_online;
+	}
+	online ++;
 	
-	debug_text = "Logged in" + ping_text;
+	debug_text = string(online) + " players online" + ping_text;
 	break;
 	
 case LOGINSTATE.error:
