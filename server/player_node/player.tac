@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """ Game client """
 
-import os
-import sys
+#import os
+#import sys
 from twisted.application.service import Application, MultiService
 from twisted.application.internet import TCPServer, TCPClient
 
 # add current path to PATH due to twistd not having current path in search
-TWISTED_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(TWISTED_DIR)
+#TWISTED_DIR = os.path.dirname(os.path.abspath(__file__))
+#sys.path.append(TWISTED_DIR)
 
 from player import PlayerFactory
 from redissub import RedisSubFactory
