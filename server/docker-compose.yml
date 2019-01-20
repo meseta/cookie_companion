@@ -3,27 +3,33 @@ version: '3'
 services:
     redis:
         image: "redis:5.0.3-alpine"
-        restart: always
+        restart: unless-stopped
         ports:
             - "6379:6379"
     hub:
         build:
             context: ./hub
             dockerfile: Dockerfile
-        restart: always
+        restart: unless-stopped
         ports:
             - "80:80"
     playernode0:
         build:
             context: ./player_node
             dockerfile: Dockerfile
-        restart: always
+        restart: unless-stopped
         ports:
             - "61220:61220"
+        depends_on:
+            - redis
+            - hub
     playernode1:
         build:
             context: ./player_node
             dockerfile: Dockerfile
-        restart: always
+        restart: unless-stopped
         ports:
             - "61221:61220"
+        depends_on:
+            - redis
+            - hub
