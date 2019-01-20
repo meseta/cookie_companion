@@ -2,42 +2,28 @@ version: '3'
 
 services:
     redis:
-        image: "redis:5.0-rc5-alpine"
+        image: "redis:5.0.3-alpine"
+        restart: always
         ports:
             - "6379:6379"
     hub:
         build:
             context: ./hub
             dockerfile: Dockerfile
+        restart: always
         ports:
             - "80:80"
     playernode0:
         build:
             context: ./player_node
             dockerfile: Dockerfile
+        restart: always
         ports:
             - "61220:61220"
     playernode1:
         build:
             context: ./player_node
             dockerfile: Dockerfile
+        restart: always
         ports:
             - "61221:61220"
-    playernode2:
-        build:
-            context: ./player_node
-            dockerfile: Dockerfile
-        ports:
-            - "61222:61220"
-    playernode3:
-        build:
-            context: ./player_node
-            dockerfile: Dockerfile
-        ports:
-            - "61223:61220"
-    playernode4:
-        build:
-            context: ./player_node
-            dockerfile: Dockerfile
-        ports:
-            - "61224:61220"
