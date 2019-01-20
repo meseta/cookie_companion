@@ -2,7 +2,7 @@
 
 var eventid = async_load[? "id"];
 var type = async_load[? "type"];
-
+show_debug_message(json_encode(async_load));
 if (eventid == server_socket) {
 	
 	switch (type) {
