@@ -1,11 +1,16 @@
-FROM python:3.6
+FROM python:3.6.6-alpine
 
-WORKDIR /app
-ADD . /app
-
+RUN apk add --update python3-dev build-base \
+    && rm -rf /var/cache/apk/*
+    
 RUN pip install --no-cache-dir pipenv
 
+WORKDIR /app
+ADD ./Pipfile* ./.env /app/
 RUN pipenv install
+
+
+ADD . /app
 
 EXPOSE 61220
 
